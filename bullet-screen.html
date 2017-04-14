@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>bullet-screen</title>
+    <link rel="stylesheet" href="bullet_screen.css"/>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="bullet-screen.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.send').click(function(){
+                $.bulletScreen.send($('#bullet-text').val(),$('.container'));
+                $('#bullet-text').val("");
+            });
+            $('.close').click(function(){
+                $.bulletScreen.clear($('.container'));
+            });
+            $('#bullet-text').keyup(function(e){
+                if(e.keyCode==13){
+                    $.bulletScreen.send($('#bullet-text').val(),$('.container'));
+                    $('#bullet-text').val("");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+    <div class="menu-bar">
+        <input type="text" placeholder="弹幕内容" id="bullet-text"/>
+        <span class="btn send">发送弹幕</span>
+        <span class="btn close">关闭弹幕</span>
+    </div>
+</body>
+</html>
